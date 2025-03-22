@@ -24,8 +24,7 @@ function ProductList({ onHomeClick }) {
     setShowCart(false);
   };
 
-  const handleContinueShopping = (e) => {
-    e.preventDefault();
+  const handleContinueShopping = () => {
     setShowCart(false);
   };
 
@@ -36,8 +35,7 @@ function ProductList({ onHomeClick }) {
   const totalItemsInCart = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const plantsArray = [
-    
-    /* keep your full plant list here – already in canvas */
+    // all categories and their plant objects remain unchanged
     {
         category: "Air Purifying Plants",
         plants: [
@@ -243,12 +241,10 @@ function ProductList({ onHomeClick }) {
             }
         ]
     }
-
-];
+  ];
 
   return (
     <div>
-      {/* Navbar */}
       <div className="navbar">
         <div className="tag">
           <div className="luxury">
@@ -265,18 +261,12 @@ function ProductList({ onHomeClick }) {
           </div>
         </div>
 
-        {/* Center "Plants" link */}
         <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-          <a
-            href="#"
-            onClick={handlePlantsClick}
-            style={{ color: 'white', fontSize: '30px', textDecoration: 'none' }}
-          >
+          <a href="#" onClick={handlePlantsClick} style={{ color: 'white', fontSize: '30px', textDecoration: 'none' }}>
             Plants
           </a>
         </div>
 
-        {/* Right Cart icon */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingRight: '20px' }}>
           <a href="#" onClick={handleCartClick}>
             <div style={{ position: 'relative' }}>
@@ -292,18 +282,7 @@ function ProductList({ onHomeClick }) {
                   strokeWidth="10"
                 ></path>
               </svg>
-              <span
-                style={{
-                  position: 'absolute',
-                  top: '-10px',
-                  right: '-10px',
-                  background: 'red',
-                  color: 'white',
-                  borderRadius: '50%',
-                  padding: '4px 8px',
-                  fontSize: '14px'
-                }}
-              >
+              <span style={{ position: 'absolute', top: '-10px', right: '-10px', background: 'red', color: 'white', borderRadius: '50%', padding: '4px 8px', fontSize: '14px' }}>
                 {totalItemsInCart}
               </span>
             </div>
@@ -311,7 +290,6 @@ function ProductList({ onHomeClick }) {
         </div>
       </div>
 
-      {/* Main Content */}
       {!showCart ? (
         <div className="product-grid">
           {plantsArray.map((category, idx) => (
@@ -324,9 +302,7 @@ function ProductList({ onHomeClick }) {
                     <div className="product-title">{plant.name}</div>
                     <div className="product-price">{plant.cost}</div>
                     <p><em>{plant.description}</em></p>
-                    <button className="product-button" onClick={() => handleAddToCart(plant)}>
-                      Add to Cart
-                    </button>
+                    <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
                   </div>
                 ))}
               </div>
